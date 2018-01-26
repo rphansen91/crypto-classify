@@ -1,6 +1,7 @@
 {
   "name": "crypto-classify",
   "version": "0.1.0",
+  "homepage": "http://rphansen91.github.io/crypto-classify",
   "private": true,
   "dependencies": {
     "@stdlib/stdlib": "^0.0.30",
@@ -21,6 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
