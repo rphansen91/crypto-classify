@@ -33,7 +33,7 @@ export default class Coin extends Component {
     const { hidden } = this.state
     return <button {...props}
       className={cx({ [className]: true, hide: hidden })} >
-      { image ? <img src={image} /> : <div/> }
+      { image ? <img src={image} alt={coin.name} /> : <div/> }
       <div className="detail">
         <div className="percent">{ renderPercent(percent24h(coin)) }</div>
         <p className="title">#{coin.rank} {coin.name}</p>

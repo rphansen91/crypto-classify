@@ -7,7 +7,7 @@ export function standard (arr) {
   const avg = mean(arr)
   const stdd = sd(arr)
   return arr.map(function (v) {
-    return (v - mean) / stdd
+    return (v - avg) / stdd
   })
 }
 

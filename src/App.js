@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { allCoins } from './coins';
-import { btcData } from './data';
 import Loader from 'react-loader';
 import Modal from 'react-modal';
 import MasonryInfiniteScroller from 'react-masonry-infinite';
 import Coin from './components/Coin';
 import DisplayCoin from './components/DisplayCoin';
 import Input from './components/Input';
-import { flow, curry, some } from 'lodash'
+import { curry, some } from 'lodash'
 import { image } from './formatters/coin'
 import './App.css';
 
@@ -90,7 +89,7 @@ class App extends Component {
   }
 
   render() {
-    const { loaded, coins, images, coin, query, hasMore } = this.state
+    const { loaded, coins, images, coin, hasMore } = this.state
     return (
       <div className="main">
         <Input onChange={this.handleChange.bind(this)} />

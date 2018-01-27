@@ -1,5 +1,5 @@
 import React from 'react'
-import cx from '../../utils/cx'
+import { cx, isMobile, handleScroll } from '../../utils'
 import './index.css'
 
 export default class extends React.Component {
@@ -13,10 +13,14 @@ export default class extends React.Component {
   }
 
   componentDidMount () {
-    window.onscroll = () => {
-      if (window.scrollY === 0) this.open()
-      else this.close()
-    }
+    isMobile(null, this.handleScroll.bind(this))()
+  }
+
+  handleScroll () {
+    handleScroll(({ y }) => {
+      if (y) this.close()
+      else this.open()
+    })
   }
 
   open () {
@@ -27,6 +31,8 @@ export default class extends React.Component {
 
   close () {
     this.setState({ open: false })
+    setTimeout(() => this.target.blur(), 400)
+    this.target.blur()
   }
 
   toggle () {

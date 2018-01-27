@@ -1,13 +1,8 @@
 /* global Highcharts */
 
-import React from 'react'
 import Chart from './Chart'
 
 export default class extends Chart {
-  constructor (props) {
-    super(props)
-  }
-
   chartOpts () {
     return line(this.props)
   }

@@ -30,7 +30,6 @@ export default class extends React.Component {
   }
 
   render () {
-    const { coin } = this.props
     const { price, up } = this.state
 
     return <p className={up ? 'green' : 'red'}>

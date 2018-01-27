@@ -1,6 +1,5 @@
 /* global Highcharts */
 
-import React from 'react'
 import Chart from './Chart'
 
 function unique (arr=[]) {
@@ -11,10 +10,6 @@ function unique (arr=[]) {
 }
 
 export default class extends Chart {
-  constructor (props) {
-    super(props)
-  }
-
   chartOpts () {
     return stream(this.props)
   }
