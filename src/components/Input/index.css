@@ -1,6 +1,7 @@
 .search {
   position: fixed;
   top: 1em; left: 1em;
+  z-index: 2;
 }
 
 .search * {
@@ -103,4 +104,11 @@
   width: 100%;
   position: absolute;
   left: 0; right: 0;
+}
+
+@media (max-width: 800px) {
+  .search {
+    top: unset;
+    bottom: 1em;
+  }
 }

@@ -21,7 +21,8 @@ body {
 }
 
 .masonry {
-  padding: 3em 0;
+  padding-top: 1em;
+  padding-bottom: 3em;
 }
 
 .notfound {
