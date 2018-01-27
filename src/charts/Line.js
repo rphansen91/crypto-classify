@@ -40,7 +40,7 @@ function line ({
     chart: {
       zoomType: 'x',
       backgroundColor: 'rgba(0,0,0,0)',
-      height: '50%',
+      height: `${9 / 16 * 100}%`,
       events
     },
 
@@ -77,23 +77,24 @@ function line ({
     },
 
     tooltip: {
-      pointFormatter: function() {
-        const { low, high, open, close, y } = this
-        const { series: { name } } = this
+      enabled: false,
+      // pointFormatter: function() {
+      //   const { low, high, open, close, y } = this
+      //   const { series: { name } } = this
 
-        if (low && high && open && close) {
-          return `<p>
-            <p><b>${name}</b>:</p><br>
-            <p>low: ${yFormatter(low)}</p><br>
-            <p>open: ${yFormatter(open)}</p><br>
-            <p>close: ${yFormatter(close)}</p><br>
-            <p>high: ${yFormatter(high)}</p><br>
-          </p>`
-        }
+      //   if (low && high && open && close) {
+      //     return `<p>
+      //       <p><b>${name}</b>:</p><br>
+      //       <p>low: ${yFormatter(low)}</p><br>
+      //       <p>open: ${yFormatter(open)}</p><br>
+      //       <p>close: ${yFormatter(close)}</p><br>
+      //       <p>high: ${yFormatter(high)}</p><br>
+      //     </p>`
+      //   }
 
-        if (low && high) return `<p><b>${name}</b>: ${yFormatter(low)} - ${yFormatter(high)}</p>`
-        return `<p><b>${name}</b>: ${yFormatter(y)}</p>`
-      }
+      //   if (low && high) return `<p><b>${name}</b>: ${yFormatter(low)} - ${yFormatter(high)}</p>`
+      //   return `<p><b>${name}</b>: ${yFormatter(y)}</p>`
+      // }
     },
 
     legend: {
@@ -119,9 +120,6 @@ function line ({
           maxWidth: 500
         },
         chartOptions: {
-          chart: {
-            height: 'inherit',
-          },
           yAxis: {
             labels: {
               align: 'left',

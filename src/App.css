@@ -1,94 +1,45 @@
-.App {
-
-}
-
-.search {
-  padding: 1em;
-}
-
-.search input {
-  line-height: 3em;
-  font-size: 2em;
-  width: 100%;
+* {
   margin: 0;
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid rgba(255,255,255,0.6);
-  color: #fff;
-  outline: none;
-}
-
-.grid {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
-  grid-auto-rows: 20px;
-}
-
-.coins {
-  list-style: none;
-  justify-content: center;
-  color: #fff;
   padding: 0;
-  margin: 0;
 }
 
-.coin {
-  width: 300px;
-  text-align: center;
-  cursor: pointer;
-  text-align: center;
-  line-height: 1em;
-  padding-bottom: 1em;
-  font-size: 1em;
-  margin: 1em;
-  border: 1px solid;
-  box-shadow: 2px 2px 3px rgba(0,0,0,1);
-  border-radius: 3px;
-  position: relative;
-  box-sizing: border-box;
-  word-wrap: break-word;
+body {
+  min-height: 100vh;
+  font-size: 16px;
+  background: #222;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.header {
   color: #fff;
-  background:linear-gradient(to bottom, #222 0%, #333 70%, #444 100%);
-  transform-origin: center;
-  transform: scale(1);
-  transition: all 0.3s ease-in;
-}
-
-.coin:hover, .coin:active, .coin:focus {
-  transform: scale(1.2);
-  box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-  z-index: 1;
-}
-
-.coin .title {
-  margin-top: 1em;
-  font-weight: bold;
-}
-
-img {
-  max-width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-
-.display {
-  color: #fff;
-}
-
-.ticker {
-  font-size: 1.2em;
   text-align: center;
+  font-family: 'Unica One', sans-serif;
+  line-height: 3em;
+  font-size: 3em;
+}
+
+.masonry {
+  padding: 3em 0;
+}
+
+.notfound {
+  font-size: 2em;
+  line-height: 3em;
+  color: #fff;
+  text-align: center;
+  font-family: 'Unica One', sans-serif;
 }
 
 .red {
-  color: red;
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(255, 0, 0);
   transition: color 0.3s ease-in;
 }
 
 .green {
-  color: green;
-  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
+  color: rgb(11, 188, 11);
   transition: color 0.3s ease-in;
 }

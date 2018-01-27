@@ -8,6 +8,7 @@ import Loader from 'react-loader'
 import RealtimePrice from '../RealtimePrice'
 import formatSatoshi from '../../formatters/satoshi'
 import formatDollar from '../../formatters/dollar'
+import './index.css'
 
 function yFormatter ({ symbol }) {
   if (symbol === 'BTC') return formatDollar
@@ -85,16 +86,6 @@ export default class extends React.Component {
 
   chartLoaded (chart) {
     this.chart = chart
-    // load: function () {
-    console.log(chart)
-      // set up the updating of the chart each second
-      // var series = this.series[0];
-      // setInterval(function () {
-      //     var x = (new Date()).getTime(), // current time
-      //         y = Math.round(Math.random() * 100);
-      //     series.addPoint([x, y], true, true);
-      // }, 1000);
-  // }
   }
 
   handleMessage (m) {

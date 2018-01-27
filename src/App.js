@@ -45,7 +45,8 @@ class App extends Component {
       query: '',
       coins: [],
       page: 0,
-      coin: null
+      coin: null,
+      hasMore: true
     }
   }
 
@@ -58,18 +59,14 @@ class App extends Component {
 
   nextPage (p) {
     const { page, query } = this.state
-    console.log(p, 'Next', this.rendering)
-    if (!this.rendering) {
-      return this.renderPage({ page: page + 1, query })
-    }
+    if (!this.rendering) return this.renderPage({ page: page + 1, query })
     return Promise.resolve()
   }
 
   renderPage ({ query, page }) {
     const coinIncludesQuery = coinIncludes(query)
-    const coins = this.coins
-    .filter(coinIncludesQuery)
-    .slice(0, BATCH_SIZE * page)
+    const filtered = this.coins.filter(coinIncludesQuery)
+    const coins = filtered.slice(0, BATCH_SIZE * page)
 
     this.rendering = true
     return Promise.all(
@@ -77,7 +74,8 @@ class App extends Component {
       .map(image)
       .map(loadImage)
     ).then((images) => {
-      this.setState({ page, query, coins, images, loaded: true })
+      const hasMore = coins.length < filtered.length
+      this.setState({ hasMore, page, query, coins, images, loaded: true })
       this.rendering = false
     })
   }
@@ -92,20 +90,24 @@ class App extends Component {
   }
 
   render() {
-    const { loaded, coins, images, coin, query } = this.state
+    const { loaded, coins, images, coin, query, hasMore } = this.state
     return (
-      <div className="App">
+      <div className="main">
         <Input onChange={this.handleChange.bind(this)} />
-        <Loader loaded={loaded} color="#fff">
+
+        <h1 className="header">Crypto Classify</h1>
+        <div className="masonry">
           {
-            !coins.length ?
-            <p>Nothing found</p>:
+            !loaded || coins.length ?
             <MasonryInfiniteScroller
               pageStart={0}
               initialLoad={false}
-              hasMore={true}
+              hasMore={hasMore}
               style={{margin: 'auto'}}
-              loadMore={this.nextPage.bind(this)}>
+              loadMore={this.nextPage.bind(this)}
+              loader={<div key="loader" style={{position: 'relative', height: '10em'}}>
+                <Loader loaded={false} color="#fff" />
+              </div>}>
               {
                 coins.map((coin, i) =>
                   <Coin key={i}
@@ -114,13 +116,14 @@ class App extends Component {
                   coin={coin}
                   onClick={() => this.setState({ coin })} />)
               }
-            </MasonryInfiniteScroller>
+            </MasonryInfiniteScroller>:
+            <p className="notfound">Nothing found</p>
           }
-        </Loader>
+        </div>
         <Modal
           style={{
-            overlay: {backgroundColor: "rgba(0, 0, 0, 0.75)", zIndex: 2},
-            content: {backgroundColor: "#222", zIndex: 2},
+            overlay: {backgroundColor: "rgba(255, 255, 255, 0.2)", zIndex: 3},
+            content: {background: "linear-gradient(to top, #222 70%, #333 80%, #444 100%)", border: "1px solid rgba(0,0,0,0.8)", boxShadow: "4px 4px 6px rgba(0,0,0,1)", zIndex: 2},
           }}
           isOpen={coin ? true : false}
           onRequestClose={() => this.setState({ coin: null })}
