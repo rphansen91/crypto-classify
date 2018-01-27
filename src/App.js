@@ -8,6 +8,7 @@ import DisplayCoin from './components/DisplayCoin';
 import Input from './components/Input';
 import { curry, some } from 'lodash'
 import { image } from './formatters/coin'
+import { scrollTo } from './utils/handleScroll'
 import './App.css';
 
 const keysInclude = curry(function keysInclude (keys, query, coin) {
@@ -81,6 +82,7 @@ class App extends Component {
 
   handleChange ({ value: query }) {
     const { page } = this.state
+    scrollTo(0, 0)
     clearTimeout(this.timer)
     this.timer = setTimeout(() => {
       this.setState({ coins: [], loaded: false })

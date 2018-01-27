@@ -53,7 +53,7 @@ export default class extends React.Component {
 
   render () {
     const { value, open } = this.state
-    return <div className={cx({ search: true, open })}>
+    return <div className={cx({ search: true, open })} onClick={ev => ev.stopPropagation()}>
 
       <div className="toggle" onClick={this.toggle.bind(this)} />
 
@@ -63,8 +63,7 @@ export default class extends React.Component {
       ref={target => this.target = target}
       onChange={this.handleChange.bind(this)} />
 
-      <div
-        className={cx({ clear: true, hide: !value })}
+      <div className={cx({ clear: true, hide: !value })}
         onClick={this.clear.bind(this)} />
 
     </div>

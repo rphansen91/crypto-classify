@@ -3,9 +3,9 @@ export default function (cb) {
     cb({ x: window.scrollX, y: window.scrollY })
   }
 
-  // window.addEventListener('scroll', handler)
+  return function () {}
+}
 
-  return function () {
-    // window.removeEventListener('scroll', handler)
-  }
+export function scrollTo (x, y) {
+  window.scrollTo(x, y)
 }
